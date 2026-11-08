@@ -1,13 +1,28 @@
-print("=== 欢迎来到【不安全】的系统 ===")
-# 我们设定正确的密码是 "123456"
-correct_password = "123456"
+import tkinter as tk
+import time
 
-# 接收你输入的密码
-user_input = input("请输入密码: ")
+def fake_bsod():
+    # 创建全屏窗口
+    root = tk.Tk()
+    root.attributes('-fullscreen', True)
+    root.configure(bg='#0078D7') # Windows经典蓝屏蓝
 
-# 模拟黑客网站的错误查询逻辑
-# 如果用户输入的密码等于正确的，或者 1=1 成立，就通过
-if user_input == correct_password or "OR 1=1" in user_input:
-    print("【ACCESS GRANTED】恭喜，系统已被入侵，你进来了！")
-else:
-    print("【ACCESS DENIED】密码错误！")
+    # 蓝屏表情
+    label_face = tk.Label(root, text=":(", font=("Segoe UI", 100), bg='#0078D7', fg='white')
+    label_face.pack(pady=(100, 20))
+
+    # 提示文字
+    text = "你的电脑遇到问题，需要重新启动。\n我们只收集某些错误信息，然后为你重新启动。\n\n完成度: 99%"
+    label_text = tk.Label(root, text=text, font=("Microsoft YaHei", 24), bg='#0078D7', fg='white', justify='left')
+    label_text.pack(pady=20)
+
+    # 假的错误代码
+    err_text = "停止代码: CRITICAL_PROCESS_DIED\n失败的操作: Hacker_Invasion.sys"
+    label_err = tk.Label(root, text=err_text, font=("Microsoft YaHei", 14), bg='#0078D7', fg='white', justify='left')
+    label_err.pack(pady=50)
+
+    # 按 Esc 退出
+    root.bind("<Escape>", lambda e: root.destroy())
+    root.mainloop()
+
+fake_bsod()
